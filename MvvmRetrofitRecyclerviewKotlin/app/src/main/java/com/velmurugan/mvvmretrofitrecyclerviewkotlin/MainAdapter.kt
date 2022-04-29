@@ -8,10 +8,10 @@ import com.velmurugan.mvvmretrofitrecyclerviewkotlin.databinding.AdapterMovieBin
 
 class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
 
-    var movies = mutableListOf<Movie>()
+    var repos = mutableListOf<GitHubRepos>()
 
-    fun setMovieList(movies: List<Movie>) {
-        this.movies = movies.toMutableList()
+    fun setReposList(repos: List<GitHubRepos>) {
+        this.repos = repos.toMutableList()
         notifyDataSetChanged()
     }
 
@@ -23,14 +23,15 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val movie = movies[position]
-       holder.binding.name.text = movie.name
-        Glide.with(holder.itemView.context).load(movie.imageUrl).into(holder.binding.imageview)
+        val repo = repos[position]
+        holder.binding.nameText.text = repo.name
+        holder.binding.idText.text = repo.id.toString()
+        //Glide.with(holder.itemView.context).load(movie.imageUrl).into(holder.binding.imageview)
 
     }
 
     override fun getItemCount(): Int {
-        return movies.size
+        return repos.size
     }
 }
 

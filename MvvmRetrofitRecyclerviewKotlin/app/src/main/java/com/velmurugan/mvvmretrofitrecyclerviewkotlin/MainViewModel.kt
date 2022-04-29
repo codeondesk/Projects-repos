@@ -8,18 +8,18 @@ import retrofit2.Response
 
 class MainViewModel constructor(private val repository: MainRepository)  : ViewModel() {
 
-    val movieList = MutableLiveData<List<Movie>>()
+    val repoList = MutableLiveData<List<GitHubRepos>>()
     val errorMessage = MutableLiveData<String>()
 
-    fun getAllMovies() {
+    fun getAllRepos() {
 
-        val response = repository.getAllMovies()
-        response.enqueue(object : Callback<List<Movie>> {
-            override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
-                movieList.postValue(response.body())
+        val response = repository.getAllRepos()
+        response.enqueue(object : Callback<List<GitHubRepos>> {
+            override fun onResponse(call: Call<List<GitHubRepos>>, response: Response<List<GitHubRepos>>) {
+                repoList.postValue(response.body())
             }
 
-            override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
+            override fun onFailure(call: Call<List<GitHubRepos>>, t: Throwable) {
                 errorMessage.postValue(t.message)
             }
         })

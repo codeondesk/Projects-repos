@@ -9,8 +9,8 @@ import retrofit2.http.GET
 
 interface RetrofitService {
 
-    @GET("movielist.json")
-    fun getAllMovies() : Call<List<Movie>>
+    @GET("users/VyaraGGeorgieva/repos")
+    fun getAllRepos() : Call<List<GitHubRepos>>
 
     companion object {
 
@@ -20,7 +20,7 @@ interface RetrofitService {
 
             if (retrofitService == null) {
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("https://howtodoandroid.com/")
+                    .baseUrl("https://api.github.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 retrofitService = retrofit.create(RetrofitService::class.java)

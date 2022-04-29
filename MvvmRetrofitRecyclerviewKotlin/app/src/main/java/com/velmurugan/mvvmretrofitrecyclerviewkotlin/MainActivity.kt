@@ -27,14 +27,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.recyclerview.adapter = adapter
 
-        viewModel.movieList.observe(this, Observer {
+        viewModel.repoList.observe(this, Observer {
             Log.d(TAG, "onCreate: $it")
-            adapter.setMovieList(it)
+            adapter.setReposList(it)
         })
 
         viewModel.errorMessage.observe(this, Observer {
 
         })
-        viewModel.getAllMovies()
+        viewModel.getAllRepos()
     }
 }
